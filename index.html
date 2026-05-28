@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Learning & Communication Board</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.2s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .display {
+    margin-top: 30px;
+    font-size: 22px;
+    color: #222;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Learning & Communication Board</h1>
+<p>Tap a card to communicate</p>
+
+<div class="grid">
+
+  <div class="card" onclick="speak('I want food')">
+    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
+    <div class="label">Food</div>
+  </div>
+
+  <div class="card" onclick="speak('I am happy')">
+    <img src="https://cdn-icons-png.flaticon.com/512/742/742751.png">
+    <div class="label">Happy</div>
+  </div>
+
+  <div class="card" onclick="speak('I need help')">
+    <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png">
+    <div class="label">Help</div>
+  </div>
+
+  <div class="card" onclick="speak('I am sad')">
+    <img src="https://cdn-icons-png.flaticon.com/512/742/742774.png">
+    <div class="label">Sad</div>
+  </div>
+
+  <div class="card" onclick="speak('I want water')">
+    <img src="https://cdn-icons-png.flaticon.com/512/728/728093.png">
+    <div class="label">Water</div>
+  </div>
+
+</div>
+
+<div class="display" id="output"></div>
+
+<script>
+function speak(text) {
+  document.getElementById("output").innerText = text;
+
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.lang = "en-US";
+  window.speechSynthesis.speak(msg);
+}
+</script>
+
+</body>
+</html>
